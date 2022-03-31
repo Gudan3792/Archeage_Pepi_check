@@ -11,3 +11,5 @@ x.txt파일을 저장한 뒤 main.exe 를 실행하여 실행 버튼을 누른�
 x.txt 의 배열(아이디,비밀번호) 계 10개 가 넘어가면 out_of_range 에러뜨니 초과하지않도록, 이보다 적은건 상관없음.
 
 https://github.com/Gudan3792/Archeage_Pepi_check
+
+개발버전 : python 3.9.6 / 크롬버전 99.0.4844.84 , 동급버전 크롬드라이버
