@@ -1,4 +1,6 @@
+from subprocess import CREATE_NO_WINDOW
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
 import time
 import chromedriver_autoinstaller
 import os
@@ -34,6 +36,7 @@ for j in range(0,len(array)):
         pw_num += 1
 
 def main_start():
+    
     for i in range(0,len(id_array)):
         options = webdriver.ChromeOptions()
         options.add_experimental_option("excludeSwitches", ["enable-logging"])
