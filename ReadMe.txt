@@ -8,4 +8,6 @@ x.txt 파일 내부에 name1@example.com 과 password_example 을 사용자의 �
 
 x.txt파일을 저장한 뒤 main.exe 를 실행하여 실행 버튼을 누른다.
 
+x.txt 의 배열(아이디,비밀번호) 계 10개 가 넘어가면 out_of_range 에러뜨니 초과하지않도록, 이보다 적은건 상관없음.
+
 https://github.com/Gudan3792/Archeage_Pepi_check
