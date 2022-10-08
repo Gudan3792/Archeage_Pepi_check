@@ -12,9 +12,9 @@ chromedriver_autoinstaller.install()
 path = os.getcwd()
 f = open(path+"/"+"x.txt", "r", encoding='utf-8')
 firstline = f.readlines()
-array = ['','','','','','','','','','']
-id_array = ['','','','','']
-pw_array = ['','','','','']
+array = ['','']
+id_array = ['']
+pw_array = ['']
 
 i=0
 
@@ -42,14 +42,10 @@ def main_start():
         options.add_experimental_option("excludeSwitches", ["enable-logging"])
         driver = webdriver.Chrome(options=options)
         driver.set_window_size(1440,900)
-        driver.get('https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=%EC%95%84%ED%82%A4%EC%97%90%EC%9D%B4%EC%A7%80')
-        driver.find_element_by_xpath('/html/body/div[3]/div[2]/div/div[1]/section[1]/div[2]/div[1]/div/div[2]/dl/div[5]/dd/a[2]').click()
-        driver.close()
-        driver.switch_to.window(driver.window_handles[0])
-
-        if(driver.current_url != 'https://archeage.xlgames.com/?searchCookie=true'):
-            driver.find_element_by_class_name('link-home').click()
-
+        driver.get('https://archeage.xlgames.com/')
+        time.sleep(1)
+        if(driver.current_url != 'https://archeage.xlgames.com/'):
+            driver.find_element_by_xpath('/html/body/div/div/a').click()
         driver.find_element_by_xpath('/html/body/div[2]/section[2]/article/div/div[4]/div/div[2]/div[1]/a').click()
     
         driver.find_element_by_id('id_field').send_keys(id_array[i])
@@ -62,11 +58,9 @@ def main_start():
             driver.find_element_by_class_name('btn-cancel').click()
 
             time.sleep(1)
-        driver.find_element_by_xpath('/html/body/div[2]/section[2]/div[1]/div[1]/div/div[2]/div[4]/a').click()
+        driver.find_element_by_xpath('/html/body/div[2]/section[2]/div[2]/a/img').click()
         time.sleep(1)
-        iframe = driver.find_element_by_id('eventFrame')
-        driver.switch_to.frame(iframe)
-        driver.find_element_by_class_name('link-gift ').click()
+        driver.find_element_by_xpath('/html/body/div[2]/div[1]/div[1]/a').click()
         time.sleep(1)
         driver.close()
     
