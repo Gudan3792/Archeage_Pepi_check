@@ -4,40 +4,46 @@ from selenium.webdriver.chrome.service import Service
 import time
 import chromedriver_autoinstaller
 import os
-from tkinter import *
+import json
 
 
 chromedriver_autoinstaller.install()
 
-path = os.getcwd()
-f = open(path+"/"+"x.txt", "r", encoding='utf-8')
-firstline = f.readlines()
-array = ['','']
-id_array = ['']
-pw_array = ['']
+with open('ID.json', 'r') as f:
+    json_data = json.load(f)
 
-i=0
+# path = os.getcwd()
+# f = open(path+"/"+"x.txt", "r", encoding='utf-8')
+# firstline = f.readlines()
+# array = ['','']
+# id_array = ['']
+# pw_array = ['']
 
-for line in firstline:
-    line = line.strip()
-    array[i] = line
-    i += 1
-f.close()
+# i=0
 
-id_num = 0
-pw_num = 0
+# for line in firstline:
+#     line = line.strip()
+#     array[i] = line
+#     i += 1
+# f.close()
 
-for j in range(0,len(array)):
-    if (j % 2 == 0):
-        id_array[id_num] = array[j]
-        id_num += 1
-    else:
-        pw_array[pw_num] = array[j]
-        pw_num += 1
+# id_num = 0
+# pw_num = 0
+
+# for j in range(0,len(array)):
+#     if (j % 2 == 0):
+#         id_array[id_num] = array[j]
+#         id_num += 1
+#     else:
+#         pw_array[pw_num] = array[j]
+#         pw_num += 1
 
 def main_start():
     
-    for i in range(0,len(id_array)):
+    for i in range(0,len(json_data)):
+        if(json_data['Num'+str(i)]['ID'] == 'ex@example.com'):
+            continue
+        
         options = webdriver.ChromeOptions()
         options.add_experimental_option("excludeSwitches", ["enable-logging"])
         driver = webdriver.Chrome(options=options)
@@ -48,8 +54,8 @@ def main_start():
             driver.find_element_by_xpath('/html/body/div/div/a').click()
         driver.find_element_by_xpath('/html/body/div[2]/section[2]/article/div/div[4]/div/div[2]/div[1]/a').click()
     
-        driver.find_element_by_id('id_field').send_keys(id_array[i])
-        driver.find_element_by_id('pw_field').send_keys(pw_array[i])
+        driver.find_element_by_id('id_field').send_keys(json_data['Num'+str(i)]['ID'])
+        driver.find_element_by_id('pw_field').send_keys(json_data['Num'+str(i)]['PW'])
         driver.find_element_by_class_name('btn-login-form').click()
         time.sleep(1)
 
