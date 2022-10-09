@@ -21,3 +21,5 @@
 https://github.com/Gudan3792/Archeage_Pepi_check
 
 개발버전 : python 3.9.6 / 크롬버전 99.0.4844.84 , 동급버전 크롬드라이버
+
+릴리즈 받고싶으면 
